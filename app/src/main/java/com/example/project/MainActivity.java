@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        new JsonTask(this).execute(JSON_URL);
     }
 
     @Override
