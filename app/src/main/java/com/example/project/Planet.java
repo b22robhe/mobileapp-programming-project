@@ -17,13 +17,13 @@ public class Planet {
         name="No Name";
     }
 
-    public Planet(String id, String name, int moons, String category,float surfaceArea, String imageURL) {
+    public Planet(String id, String name, String company, String category,int size, String auxdata) {
         this.id = id;
         this.name = name;
-        this.moons = moons;
+        this.moons = Integer.valueOf(company);
         this.category = category;
-        this.surfaceArea = surfaceArea;
-        this.imageURL = imageURL;
+        this.surfaceArea = size/1000;
+        this.imageURL = auxdata;
     }
 
 
@@ -48,6 +48,6 @@ public class Planet {
     }
     @Override
     public String toString(){
-        return name;
+        return category;
     }
 }

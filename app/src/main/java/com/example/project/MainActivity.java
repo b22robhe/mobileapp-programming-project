@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Type type = new TypeToken<List<Planet>>() {}.getType();
         planets = gson.fromJson(json, type);
 
-        //Log.d("MainActivity", planets.toString());
+        Log.d("XD", planets.toString());
 
         adapter = new RecyclerViewAdapter(this, planets, new RecyclerViewAdapter.OnClickListener() {
             @Override
