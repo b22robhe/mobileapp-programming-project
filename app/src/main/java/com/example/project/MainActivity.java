@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=b22robhe";
 
-    ArrayList<Test> tests;
+    ArrayList<Planet> planets;
 
     RecyclerViewAdapter adapter;
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         setSupportActionBar(toolbar);
 
 
-        tests = new ArrayList<>();
+        planets = new ArrayList<>();
 
 
         new JsonTask(this).execute(JSON_URL);
@@ -45,14 +45,14 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         Log.d("MainActivity", json);
         Gson gson = new Gson();
-        Type type = new TypeToken<List<Test>>() {}.getType();
-        tests = gson.fromJson(json, type);
+        Type type = new TypeToken<List<Planet>>() {}.getType();
+        planets = gson.fromJson(json, type);
 
-        //Log.d("MainActivity", tests.toString());
+        //Log.d("MainActivity", planets.toString());
 
-        adapter = new RecyclerViewAdapter(this, tests, new RecyclerViewAdapter.OnClickListener() {
+        adapter = new RecyclerViewAdapter(this, planets, new RecyclerViewAdapter.OnClickListener() {
             @Override
-            public void onClick(Test item) {
+            public void onClick(Planet item) {
                 Toast.makeText(MainActivity.this, item.getName(), Toast.LENGTH_SHORT).show();
             }
         });
