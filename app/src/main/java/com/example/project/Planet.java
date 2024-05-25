@@ -1,6 +1,7 @@
 package com.example.project;
 
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.internal.LinkedTreeMap;
 
 @SuppressWarnings("WeakerAccess")
 public class Planet {
@@ -13,7 +14,7 @@ public class Planet {
     @SerializedName("size")
     private int surfaceArea;
     @SerializedName("auxdata")
-    private Object imageURL;
+    private LinkedTreeMap imageURL;
 
 
 
@@ -44,10 +45,10 @@ public class Planet {
         return String.valueOf(this.surfaceArea);
     }
     public String getImageURL() {
-        return this.imageURL.toString();
+        return this.imageURL.get("wiki").toString();
     }
     @Override
     public String toString(){
-        return category;
+        return imageURL.get("wiki").toString();
     }
 }
