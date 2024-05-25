@@ -4,12 +4,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
@@ -26,7 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(layoutInflater.inflate(R.layout.test_activity, parent, false));
+        return new ViewHolder(layoutInflater.inflate(R.layout.planet_activity, parent, false));
     }
 
     @Override
@@ -35,7 +38,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.category.setText(items.get(position).getCategory());
         holder.moons.setText(items.get(position).getMoons());
         holder.surfaceArea.setText(items.get(position).getSurfaceArea());
-        holder.imageURL.setText(items.get(position).getImageURL());
+
+
+        //Uri uri = Uri.parse(items.get(position).getImageURL());
+       // holder.imageURL.setImageURI(uri);
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage(items.get(position).getImageURL(), holder.imageURL);
+
+
     }
 
     @Override
@@ -48,7 +58,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView category;
         TextView moons;
         TextView surfaceArea;
-        TextView imageURL;
+        ImageView imageURL;
+
+
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -57,6 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             moons = itemView.findViewById(R.id.moons);
             surfaceArea = itemView.findViewById(R.id.surfaceArea);
             imageURL = itemView.findViewById(R.id.imageURL);
+
         }
 
         @Override
