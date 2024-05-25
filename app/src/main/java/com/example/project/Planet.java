@@ -4,29 +4,47 @@ package com.example.project;
 public class Planet {
 
     private String name;
-    private String location;
-    private int height;
+    private String id;
+    private int moons;
+    private String category;
+    private float surfaceArea;
+    private String imageURL;
+
+
 
 
     public Planet() {
         name="No Name";
-        location="No Location";
-        height=-1;
     }
 
-    public Planet(String name, String location, int height) {
+    public Planet(String id, String name, int moons, String category,float surfaceArea, String imageURL) {
+        this.id = id;
         this.name = name;
-        this.location = location;
-        this.height= height;
+        this.moons = moons;
+        this.category = category;
+        this.surfaceArea = surfaceArea;
+        this.imageURL = imageURL;
     }
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
+    public String getId() {
+        return this.id;
+    }
     public String getName() {
         return this.name;
+    }
+    public int getMoons() {
+        return this.moons;
+    }
+    public String getCategory() {
+        return this.category;
+    }
+    public float getSurfaceArea() {
+        return this.surfaceArea;
+    }
+    public String getImageURL() {
+        return this.imageURL;
     }
     @Override
     public String toString(){
