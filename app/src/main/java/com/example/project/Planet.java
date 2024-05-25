@@ -3,10 +3,12 @@ package com.example.project;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.internal.LinkedTreeMap;
 
+import java.util.Objects;
+
 @SuppressWarnings("WeakerAccess")
 public class Planet {
 
-    private String name;
+    private final String name;
     private String id;
     @SerializedName("company")
     private String moons;
@@ -23,32 +25,29 @@ public class Planet {
         name="No Name";
     }
 
-    public Planet(String id, String name, String company, String category,int size, String auxdata) {
-
-    }
-
 
 
     public String getId() {
         return this.id;
     }
     public String getName() {
-        return this.name;
+        return "Name: " + this.name;
     }
     public String getMoons() {
-        return String.valueOf(this.moons);
+        return "Moons: " + this.moons;
     }
     public String getCategory() {
-        return this.category;
+        return "Category: " + this.category;
     }
     public String getSurfaceArea() {
-        return String.valueOf(this.surfaceArea);
+        return "Surface Area (relative to Earth): " + this.surfaceArea;
     }
     public String getImageURL() {
-        return this.imageURL.get("wiki").toString();
+
+        return Objects.requireNonNull(this.imageURL.get("wiki")).toString();
     }
     @Override
     public String toString(){
-        return imageURL.get("wiki").toString();
+        return Objects.requireNonNull(imageURL.get("wiki")).toString();
     }
 }

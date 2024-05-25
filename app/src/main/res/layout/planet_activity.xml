@@ -3,38 +3,43 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#000000"
     android:orientation="vertical"
     android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/imageURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/placeholder" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Name: "
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Category: "
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/moons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Moons: "
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/surfaceArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Surface Area (realtive to Earth): "
         android:textSize="18sp" />
 
-    <ImageView
-        android:id="@+id/imageURL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/placeholder"
-        />
 
 </LinearLayout>
