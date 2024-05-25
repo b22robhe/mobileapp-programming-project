@@ -1,14 +1,19 @@
 package com.example.project;
 
+import com.google.gson.annotations.SerializedName;
+
 @SuppressWarnings("WeakerAccess")
 public class Planet {
 
     private String name;
     private String id;
-    private int moons;
+    @SerializedName("company")
+    private String moons;
     private String category;
-    private float surfaceArea;
-    private String imageURL;
+    @SerializedName("size")
+    private int surfaceArea;
+    @SerializedName("auxdata")
+    private Object imageURL;
 
 
 
@@ -18,12 +23,7 @@ public class Planet {
     }
 
     public Planet(String id, String name, String company, String category,int size, String auxdata) {
-        this.id = id;
-        this.name = name;
-        this.moons = Integer.valueOf(company);
-        this.category = category;
-        this.surfaceArea = size/1000;
-        this.imageURL = auxdata;
+
     }
 
 
@@ -34,17 +34,17 @@ public class Planet {
     public String getName() {
         return this.name;
     }
-    public int getMoons() {
-        return this.moons;
+    public String getMoons() {
+        return String.valueOf(this.moons);
     }
     public String getCategory() {
         return this.category;
     }
-    public float getSurfaceArea() {
-        return this.surfaceArea;
+    public String getSurfaceArea() {
+        return String.valueOf(this.surfaceArea);
     }
     public String getImageURL() {
-        return this.imageURL;
+        return this.imageURL.toString();
     }
     @Override
     public String toString(){

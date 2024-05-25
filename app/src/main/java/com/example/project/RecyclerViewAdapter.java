@@ -32,6 +32,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.title.setText(items.get(position).getName());
+        holder.category.setText(items.get(position).getCategory());
+        holder.moons.setText(items.get(position).getMoons());
+        holder.surfaceArea.setText(items.get(position).getSurfaceArea());
+        holder.imageURL.setText(items.get(position).getImageURL());
     }
 
     @Override
@@ -41,11 +45,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
-
+        TextView category;
+        TextView moons;
+        TextView surfaceArea;
+        TextView imageURL;
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             title = itemView.findViewById(R.id.title);
+            category = itemView.findViewById(R.id.category);
+            moons = itemView.findViewById(R.id.moons);
+            surfaceArea = itemView.findViewById(R.id.surfaceArea);
+            imageURL = itemView.findViewById(R.id.imageURL);
         }
 
         @Override
