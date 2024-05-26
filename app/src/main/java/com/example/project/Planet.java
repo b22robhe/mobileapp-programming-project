@@ -1,5 +1,7 @@
 package com.example.project;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.internal.LinkedTreeMap;
 
@@ -8,10 +10,13 @@ import java.util.Objects;
 @SuppressWarnings("WeakerAccess")
 public class Planet {
 
+    @SerializedName("name")
     private final String name;
+    @SerializedName("id")
     private String id;
     @SerializedName("company")
     private String moons;
+    @SerializedName("category")
     private String category;
     @SerializedName("size")
     private int surfaceArea;
@@ -46,6 +51,7 @@ public class Planet {
 
         return Objects.requireNonNull(this.imageURL.get("wiki")).toString();
     }
+    @NonNull
     @Override
     public String toString(){
         return Objects.requireNonNull(imageURL.get("wiki")).toString();
