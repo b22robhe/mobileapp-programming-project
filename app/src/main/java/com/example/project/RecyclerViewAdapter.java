@@ -39,9 +39,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.moons.setText(items.get(position).getMoons());
         holder.surfaceArea.setText(items.get(position).getSurfaceArea());
 
-
-        //Uri uri = Uri.parse(items.get(position).getImageURL());
-       // holder.imageURL.setImageURI(uri);
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(items.get(position).getImageURL(), holder.imageURL);
 

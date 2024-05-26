@@ -12,22 +12,42 @@
 - Lagt till en "about" sida med hjälp av en till aktivitet tillsammans  med en intent.
 - About sidan är en html fil som visas i aktiviteten med en webview.
 
-
-
+## Kodexempel:
+Lagt till kod i RecyclerViewAdapter för att presentera mer data än bara namn. Och användning av "ImageLoader" biblioteket för att hämta bilder från en URL.
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+        holder.category.setText(items.get(position).getCategory());
+        holder.moons.setText(items.get(position).getMoons());
+        holder.surfaceArea.setText(items.get(position).getSurfaceArea());
+        
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage(items.get(position).getImageURL(), holder.imageURL);
+```
+
+  I "onPostExecute" så parsar vi datan med GSON och skapar en adapter och sätter adaptern på viewen
+```
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Planet>>() {}.getType();
+        planets = gson.fromJson(json, type);
+
+        adapter = new RecyclerViewAdapter(this, planets, new RecyclerViewAdapter.OnClickListener() {
+            ...
+        });
+
+        view = findViewById(R.id.recycler_view);
+        view.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        view.setAdapter(adapter);
+```
+
+När "About" aktiviteten startar så laddas en lokal hemsida in i webviewn.
+```
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_about);
+        WebView myWebView;
+        myWebView = findViewById(R.id.about_webview);
+        myWebView.setWebViewClient(new WebViewClient());
+        myWebView.loadUrl("file:///android_asset/about.html");
     }
-}
 ```
 
 
