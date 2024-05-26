@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -100,7 +101,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         }
 
         if (id == R.id.about_page) {
-            //showInternalWebPage();
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
             Log.d("==>","Will display internal web page");
             return true;
         }
